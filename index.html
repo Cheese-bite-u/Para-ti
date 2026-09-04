@@ -7,6 +7,10 @@
     <title>Para ti 💙</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -15,40 +19,174 @@
             align-items: center;
 
             font-family: Arial, sans-serif;
-            background: #10182f;
             color: white;
             text-align: center;
+
+            background:
+                radial-gradient(circle at 20% 20%, #243b73 0%, transparent 35%),
+                radial-gradient(circle at 80% 80%, #182e5c 0%, transparent 35%),
+                linear-gradient(135deg, #0b1228, #10182f, #0a1125);
+
+            overflow: hidden;
+        }
+
+        /* Luces del fondo */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        body::before {
+            background: #4d7cff;
+            top: -100px;
+            left: -100px;
+        }
+
+        body::after {
+            background: #2766ff;
+            bottom: -100px;
+            right: -100px;
         }
 
         .inicio {
-            max-width: 600px;
-            padding: 30px;
+            position: relative;
+            z-index: 1;
+
+            width: min(90%, 650px);
+            padding: 50px 40px;
+
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 30px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.35),
+                0 0 40px rgba(68, 111, 255, 0.08);
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            animation: aparecer 0.8s ease;
         }
 
         h1 {
-            font-size: 45px;
-            margin-bottom: 15px;
+            font-size: clamp(35px, 7vw, 55px);
+            margin: 0 0 18px;
+
+            text-shadow:
+                0 0 10px rgba(120, 160, 255, 0.35),
+                0 0 25px rgba(80, 120, 255, 0.15);
         }
 
         p {
-            font-size: 20px;
+            font-size: clamp(18px, 4vw, 21px);
+            line-height: 1.6;
+            margin: 0;
             opacity: 0.85;
         }
 
         button {
-            margin-top: 25px;
-            padding: 14px 30px;
+            margin-top: 30px;
+            padding: 15px 34px;
 
             border: none;
-            border-radius: 25px;
+            border-radius: 999px;
 
             font-size: 18px;
+            font-weight: bold;
+            color: white;
+
+            background: linear-gradient(135deg, #4d7cff, #2f5bea);
+
+            box-shadow:
+                0 8px 20px rgba(45, 91, 234, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
             cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                filter 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.03);
+
+            box-shadow:
+                0 12px 28px rgba(45, 91, 234, 0.5),
+                0 0 20px rgba(77, 124, 255, 0.25);
+
+            filter: brightness(1.08);
+        }
+
+        button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Animación de entrada */
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Estrellitas */
+        .estrella {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: flotar linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes flotar {
+            from {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.5;
+            }
+
+            80% {
+                opacity: 0.5;
+            }
+
+            to {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Estrellitas del fondo -->
+    <div class="estrella" style="left: 10%; bottom: -10px; animation-duration: 8s;"></div>
+    <div class="estrella" style="left: 25%; bottom: -10px; animation-duration: 11s; animation-delay: 2s;"></div>
+    <div class="estrella" style="left: 40%; bottom: -10px; animation-duration: 9s; animation-delay: 4s;"></div>
+    <div class="estrella" style="left: 55%; bottom: -10px; animation-duration: 12s; animation-delay: 1s;"></div>
+    <div class="estrella" style="left: 70%; bottom: -10px; animation-duration: 10s; animation-delay: 3s;"></div>
+    <div class="estrella" style="left: 85%; bottom: -10px; animation-duration: 13s; animation-delay: 5s;"></div>
 
     <div class="inicio">
         <h1>Hola jeje</h1>
@@ -59,28 +197,42 @@
 
         <button onclick="comenzar()">Comenzar 💙</button>
     </div>
-<script>
-    function comenzar() {
-        document.querySelector(".inicio").innerHTML = `
-            <h1>Bueno... jeje 👀</h1>
 
-            <p>
-                Antes de seguir, quiero enseñarte algo.
-            </p>
+    <script>
+        function comenzar() {
+            const inicio = document.querySelector(".inicio");
 
-            <button onclick="siguiente()">Continuar 💙</button>
-        `;
-    }
+            inicio.style.animation = "none";
+            inicio.offsetHeight;
+            inicio.style.animation = "aparecer 0.8s ease";
 
-    function siguiente() {
-        document.querySelector(".inicio").innerHTML = `
-            <h1>...</h1>
+            inicio.innerHTML = `
+                <h1>Bueno... jeje 👀</h1>
 
-            <p>
-                Aquí iría el siguiente mensaje.
-            </p>
-        `;
-    }
-</script>
+                <p>
+                    Antes de seguir, quiero enseñarte algo.
+                </p>
+
+                <button onclick="siguiente()">Continuar 💙</button>
+            `;
+        }
+
+        function siguiente() {
+            const inicio = document.querySelector(".inicio");
+
+            inicio.style.animation = "none";
+            inicio.offsetHeight;
+            inicio.style.animation = "aparecer 0.8s ease";
+
+            inicio.innerHTML = `
+                <h1>...</h1>
+
+                <p>
+                    Aquí iría el siguiente mensaje.
+                </p>
+            `;
+        }
+    </script>
+
 </body>
 </html>
