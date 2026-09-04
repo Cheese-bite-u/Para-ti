@@ -63,7 +63,22 @@
     function comenzar() {
         document.querySelector(".inicio").innerHTML = `
             <h1>Bueno... jeje 👀</h1>
-            <p>Antes de seguir, quiero enseñarte algo.</p>
+
+            <p>
+                Antes de seguir, quiero enseñarte algo.
+            </p>
+
+            <button onclick="siguiente()">Continuar 💙</button>
+        `;
+    }
+
+    function siguiente() {
+        document.querySelector(".inicio").innerHTML = `
+            <h1>...</h1>
+
+            <p>
+                Aquí iría el siguiente mensaje.
+            </p>
         `;
     }
 </script>
