@@ -57,8 +57,15 @@
             Hice esto porque quería decirte algo...
         </p>
 
-        <button>Comenzar 💙</button>
+        <button onclick="comenzar()">Comenzar 💙</button>
     </div>
-
+<script>
+    function comenzar() {
+        document.querySelector(".inicio").innerHTML = `
+            <h1>Bueno... jeje 👀</h1>
+            <p>Antes de seguir, quiero enseñarte algo.</p>
+        `;
+    }
+</script>
 </body>
 </html>
