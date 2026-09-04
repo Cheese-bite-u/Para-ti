@@ -14,6 +14,7 @@
         body {
             margin: 0;
             min-height: 100vh;
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,25 +23,36 @@
             color: white;
             text-align: center;
 
+            overflow: hidden;
+
+            /* Zona 1 */
             background:
                 radial-gradient(circle at 20% 20%, #243b73 0%, transparent 35%),
                 radial-gradient(circle at 80% 80%, #182e5c 0%, transparent 35%),
                 linear-gradient(135deg, #0b1228, #10182f, #0a1125);
 
-            overflow: hidden;
+            transition:
+                background 1.5s ease;
         }
 
-        /* Luces del fondo */
+        /* Brillos del fondo */
         body::before,
         body::after {
             content: "";
             position: fixed;
+
             width: 300px;
             height: 300px;
+
             border-radius: 50%;
             filter: blur(80px);
+
             opacity: 0.25;
             pointer-events: none;
+
+            transition:
+                background 1.5s ease,
+                opacity 1.5s ease;
         }
 
         body::before {
@@ -59,10 +71,13 @@
             position: relative;
             z-index: 1;
 
-            width: min(90%, 650px);
+            width: min(90%, 700px);
+            max-height: 85vh;
+
             padding: 50px 40px;
 
             background: rgba(255, 255, 255, 0.07);
+
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 30px;
 
@@ -73,27 +88,43 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
 
+            overflow-y: auto;
+
             animation: aparecer 0.8s ease;
+
+            transition:
+                box-shadow 1.5s ease,
+                border-color 1.5s ease;
         }
 
         h1 {
             font-size: clamp(35px, 7vw, 55px);
+
             margin: 0 0 18px;
 
             text-shadow:
                 0 0 10px rgba(120, 160, 255, 0.35),
                 0 0 25px rgba(80, 120, 255, 0.15);
+
+            transition:
+                text-shadow 1.5s ease;
         }
 
         p {
             font-size: clamp(18px, 4vw, 21px);
-            line-height: 1.6;
+            line-height: 1.7;
+
             margin: 0;
-            opacity: 0.85;
+
+            opacity: 0.88;
+
+            transition:
+                color 1.5s ease;
         }
 
         button {
             margin-top: 30px;
+
             padding: 15px 34px;
 
             border: none;
@@ -101,9 +132,14 @@
 
             font-size: 18px;
             font-weight: bold;
+
             color: white;
 
-            background: linear-gradient(135deg, #4d7cff, #2f5bea);
+            background: linear-gradient(
+                135deg,
+                #4d7cff,
+                #2f5bea
+            );
 
             box-shadow:
                 0 8px 20px rgba(45, 91, 234, 0.35),
@@ -114,7 +150,8 @@
             transition:
                 transform 0.2s ease,
                 box-shadow 0.2s ease,
-                filter 0.2s ease;
+                filter 0.2s ease,
+                background 1.5s ease;
         }
 
         button:hover {
@@ -131,29 +168,25 @@
             transform: translateY(0) scale(0.98);
         }
 
-        /* Animación de entrada */
-        @keyframes aparecer {
-            from {
-                opacity: 0;
-                transform: translateY(20px) scale(0.97);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* Estrellitas */
+        /* Partículas */
         .estrella {
             position: fixed;
+
             width: 4px;
             height: 4px;
+
             background: white;
+
             border-radius: 50%;
+
             opacity: 0.5;
+
             animation: flotar linear infinite;
+
             pointer-events: none;
+
+            transition:
+                background 1.5s ease;
         }
 
         @keyframes flotar {
@@ -175,12 +208,116 @@
                 opacity: 0;
             }
         }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* =========================
+           ZONA 2
+        ========================= */
+
+        body.zona2 {
+            background:
+                radial-gradient(circle at 15% 20%, #3458a8 0%, transparent 35%),
+                radial-gradient(circle at 85% 80%, #273c88 0%, transparent 35%),
+                linear-gradient(135deg, #101a3a, #18275a, #101737);
+        }
+
+        body.zona2::before {
+            background: #547cff;
+        }
+
+        body.zona2::after {
+            background: #5969ff;
+        }
+
+        body.zona2 .inicio {
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.35),
+                0 0 50px rgba(84, 124, 255, 0.16);
+
+            border-color: rgba(120, 145, 255, 0.2);
+        }
+
+        /* =========================
+           ZONA 3
+        ========================= */
+
+        body.zona3 {
+            background:
+                radial-gradient(circle at 15% 20%, #64478b 0%, transparent 35%),
+                radial-gradient(circle at 85% 80%, #4a316f 0%, transparent 35%),
+                linear-gradient(135deg, #19132c, #24163b, #171125);
+        }
+
+        body.zona3::before {
+            background: #9b68d1;
+            opacity: 0.22;
+        }
+
+        body.zona3::after {
+            background: #7442b8;
+            opacity: 0.22;
+        }
+
+        body.zona3 .inicio {
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.38),
+                0 0 60px rgba(144, 92, 198, 0.16);
+
+            border-color: rgba(185, 140, 225, 0.18);
+        }
+
+        body.zona3 h1 {
+            text-shadow:
+                0 0 12px rgba(193, 151, 235, 0.35),
+                0 0 30px rgba(157, 104, 209, 0.18);
+        }
+
+        body.zona3 button {
+            background:
+                linear-gradient(
+                    135deg,
+                    #9763cf,
+                    #7040ae
+                );
+
+            box-shadow:
+                0 8px 20px rgba(112, 64, 174, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* Celular */
+        @media (max-width: 600px) {
+            .inicio {
+                width: 92%;
+                padding: 40px 25px;
+                max-height: 88vh;
+            }
+
+            p {
+                line-height: 1.6;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Estrellitas del fondo -->
+    <!-- Partículas -->
     <div class="estrella" style="left: 10%; bottom: -10px; animation-duration: 8s;"></div>
     <div class="estrella" style="left: 25%; bottom: -10px; animation-duration: 11s; animation-delay: 2s;"></div>
     <div class="estrella" style="left: 40%; bottom: -10px; animation-duration: 9s; animation-delay: 4s;"></div>
@@ -189,49 +326,156 @@
     <div class="estrella" style="left: 85%; bottom: -10px; animation-duration: 13s; animation-delay: 5s;"></div>
 
     <div class="inicio">
+
         <h1>Hola jeje</h1>
 
         <p>
             Hice esto porque quería decirte algo...
         </p>
 
-        <button onclick="comenzar()">Comenzar 💙</button>
+        <button onclick="comenzar()">
+            Comenzar 💙
+        </button>
+
     </div>
 
     <script>
-        function comenzar() {
+
+        function animarPantalla() {
             const inicio = document.querySelector(".inicio");
 
             inicio.style.animation = "none";
+
+            /*
+                Esta línea obliga al navegador
+                a reiniciar la animación.
+            */
             inicio.offsetHeight;
+
             inicio.style.animation = "aparecer 0.8s ease";
+        }
+
+
+        function comenzar() {
+
+            const inicio = document.querySelector(".inicio");
+
+            /* Cambiar a Zona 2 */
+            document.body.className = "zona2";
 
             inicio.innerHTML = `
-                <h1>Bueno... jeje 👀</h1>
+
+                <h1>
+                    Bueno... jeje 👀
+                </h1>
 
                 <p>
                     Antes de seguir, quiero enseñarte algo.
                 </p>
 
-                <button onclick="siguiente()">Continuar 💙</button>
+                <button onclick="siguiente()">
+                    Continuar 💙
+                </button>
+
             `;
+
+            animarPantalla();
         }
+
 
         function siguiente() {
+
             const inicio = document.querySelector(".inicio");
 
-            inicio.style.animation = "none";
-            inicio.offsetHeight;
-            inicio.style.animation = "aparecer 0.8s ease";
+            /* Cambiar a Zona 3 */
+            document.body.className = "zona3";
 
             inicio.innerHTML = `
-                <h1>...</h1>
+
+                <h1>
+                    Hay algo que quiero contarte...
+                </h1>
 
                 <p>
-                    Aquí iría el siguiente mensaje.
+                    A lo largo de mi vida, y especialmente durante la secundaria,
+                    siempre fui bastante cerrado a la hora de conocer gente nueva.
+                    Tenía miedo de volver a salir herido, así que muchas veces
+                    prefería mantenerme al margen.
+                    <br><br>
+
+                    Aunque tenía amigos, muchas veces me sentía desplazado,
+                    y poco a poco eso empezó a afectar otras cosas:
+                    me costaba concentrarme en mis estudios, en mí mismo y,
+                    en general, disfrutar las cosas como antes.
+                    <br><br>
+
+                    Pero entonces te conocí.
+                    <br><br>
+
+                    No sé si fue obra del destino o simplemente pura suerte,
+                    pero por alguna razón siempre terminábamos sentados juntos.
+                    Y, sinceramente, siempre voy a estar agradecido por eso.
+                    <br><br>
+
+                    Creo que una de las mejores partes de mi día es simplemente
+                    cuando tenemos una pequeña charla, sin importar de qué sea,
+                    o cuando terminamos jugando algún juego completamente aleatorio.
+                    Puede parecer algo pequeño, pero cuando estás tú,
+                    esas cosas se sienten diferentes.
+                    <br><br>
+
+                    Porque no se trata realmente de lo que hacemos.
+                    <br>
+                    Se trata de que eres tú.
+                    <br><br>
+
+                    Y supongo que esa es una de las razones por las que estoy
+                    haciendo todo esto.
+                    <br><br>
+
+                    Porque me importas. Y mucho.
                 </p>
+
+                <button onclick="zona4()">
+                    Continuar 💜
+                </button>
+
             `;
+
+            animarPantalla();
         }
+
+
+        function zona4() {
+
+            const inicio = document.querySelector(".inicio");
+
+            /*
+                Todavía dejamos preparada
+                la siguiente zona para cuando
+                escribamos la siguiente parte
+                de la historia.
+            */
+
+            inicio.innerHTML = `
+
+                <h1>
+                    💜
+                </h1>
+
+                <p>
+                    Aquí continúa la historia...
+                </p>
+
+                <button>
+                    Continuar ✨
+                </button>
+
+            `;
+
+            animarPantalla();
+        }
+
     </script>
 
 </body>
