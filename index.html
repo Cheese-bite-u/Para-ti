@@ -69,7 +69,7 @@
         }
 
         /* =========================================
-           TARJETA PRINCIPAL
+           TARJETA
         ========================================= */
 
         .inicio {
@@ -235,7 +235,46 @@
         }
 
         /* =========================================
-           ZONA 2 - AZUL
+           ANIMACIÓN DE LA CONFESIÓN
+        ========================================= */
+
+        .confesion-titulo {
+            animation: aparecerConfesion 1.4s ease forwards;
+        }
+
+        .confesion-texto {
+            opacity: 0;
+            animation: aparecerTexto 1.2s ease 1.2s forwards;
+        }
+
+        @keyframes aparecerConfesion {
+            from {
+                opacity: 0;
+                transform: scale(0.85);
+                filter: blur(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes aparecerTexto {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 0.88;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================
+           ZONA 2
         ========================================= */
 
         body.zona2 {
@@ -262,7 +301,7 @@
         }
 
         /* =========================================
-           ZONA 3 - MORADO
+           ZONA 3
         ========================================= */
 
         body.zona3 {
@@ -310,7 +349,7 @@
         }
 
         /* =========================================
-           ZONA 4 - ROSA
+           ZONA 4
         ========================================= */
 
         body.zona4 {
@@ -358,7 +397,7 @@
         }
 
         /* =========================================
-           ZONA 5 - ROSA / ROJO
+           ZONA 5
         ========================================= */
 
         body.zona5 {
@@ -407,54 +446,37 @@
 
         /* =========================================
            ZONA 6 - CONFESIÓN
-           
-           La dejamos preparada con una mezcla
-           de azul y rosa para que se sienta
-           diferente a todas las anteriores.
         ========================================= */
 
         body.zona6 {
             background:
-                radial-gradient(circle at 15% 20%, #5b70c4 0%, transparent 35%),
-                radial-gradient(circle at 85% 80%, #a75391 0%, transparent 35%),
-                linear-gradient(135deg, #1a1838, #322040, #24152f);
+                radial-gradient(circle at 15% 20%, #6576cf 0%, transparent 35%),
+                radial-gradient(circle at 85% 80%, #b55b9f 0%, transparent 35%),
+                linear-gradient(135deg, #191732, #352040, #25152f);
         }
 
         body.zona6::before {
-            background: #718cff;
-            opacity: 0.22;
+            background: #8194ff;
+            opacity: 0.25;
         }
 
         body.zona6::after {
-            background: #d06aad;
-            opacity: 0.22;
+            background: #df75bd;
+            opacity: 0.25;
         }
 
         body.zona6 .inicio {
             box-shadow:
                 0 20px 55px rgba(0, 0, 0, 0.4),
-                0 0 80px rgba(181, 112, 218, 0.22);
+                0 0 90px rgba(190, 125, 230, 0.25);
 
-            border-color: rgba(220, 169, 240, 0.22);
+            border-color: rgba(225, 180, 245, 0.25);
         }
 
         body.zona6 h1 {
             text-shadow:
-                0 0 15px rgba(210, 190, 255, 0.4),
-                0 0 35px rgba(194, 118, 224, 0.22);
-        }
-
-        body.zona6 button {
-            background:
-                linear-gradient(
-                    135deg,
-                    #7770d9,
-                    #b05aa8
-                );
-
-            box-shadow:
-                0 8px 24px rgba(151, 96, 199, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                0 0 15px rgba(220, 205, 255, 0.45),
+                0 0 40px rgba(199, 125, 232, 0.25);
         }
 
         /* =========================================
@@ -480,12 +502,9 @@
     </style>
 </head>
 
-
 <body>
 
-    <!-- =========================================
-         PARTÍCULAS
-    ========================================= -->
+    <!-- PARTÍCULAS -->
 
     <div class="estrella" style="left: 10%; bottom: -10px; animation-duration: 8s;"></div>
     <div class="estrella" style="left: 25%; bottom: -10px; animation-duration: 11s; animation-delay: 2s;"></div>
@@ -495,9 +514,7 @@
     <div class="estrella" style="left: 85%; bottom: -10px; animation-duration: 13s; animation-delay: 5s;"></div>
 
 
-    <!-- =========================================
-         CONTENIDO
-    ========================================= -->
+    <!-- CONTENIDO -->
 
     <div class="inicio">
 
@@ -519,7 +536,7 @@
     <script>
 
         /* =========================================
-           REINICIAR ANIMACIÓN
+           ANIMAR PANTALLA
         ========================================= */
 
         function animarPantalla() {
@@ -528,10 +545,6 @@
 
             inicio.style.animation = "none";
 
-            /*
-                Obliga al navegador a reiniciar
-                la animación.
-            */
             inicio.offsetHeight;
 
             inicio.style.animation = "aparecer 0.8s ease";
@@ -779,10 +792,6 @@
 
         /* =========================================
            ZONA 5 → ZONA 6
-           
-           LA CONFESIÓN TODAVÍA ESTÁ PREPARADA,
-           PERO NO LE PONEMOS EL TEXTO FINAL
-           HASTA QUE LO ESCRIBAMOS.
         ========================================= */
 
         function confesion() {
@@ -813,7 +822,7 @@
 
 
         /* =========================================
-           PANTALLA PARA LA CONFESIÓN FINAL
+           CONFESIÓN FINAL
         ========================================= */
 
         function revelar() {
@@ -822,12 +831,13 @@
 
             inicio.innerHTML = `
 
-                <h1>
-                    💙
+                <h1 class="confesion-titulo">
+                    Me gustas, Jennyfer.
                 </h1>
 
-                <p>
-                    Aquí irá la confesión final.
+                <p class="confesion-texto">
+                    Solo quería decírtelo, porque ya no quería
+                    seguir guardándomelo.
                 </p>
 
             `;
