@@ -33,7 +33,10 @@
             transition: background 1.5s ease;
         }
 
-        /* Brillos del fondo */
+        /* =========================================
+           BRILLOS DEL FONDO
+        ========================================= */
+
         body::before,
         body::after {
             content: "";
@@ -65,6 +68,10 @@
             right: -100px;
         }
 
+        /* =========================================
+           TARJETA PRINCIPAL
+        ========================================= */
+
         .inicio {
             position: relative;
             z-index: 1;
@@ -95,6 +102,10 @@
                 border-color 1.5s ease;
         }
 
+        /* =========================================
+           TEXTO
+        ========================================= */
+
         h1 {
             font-size: clamp(35px, 7vw, 55px);
 
@@ -115,6 +126,10 @@
 
             opacity: 0.88;
         }
+
+        /* =========================================
+           BOTONES
+        ========================================= */
 
         button {
             margin-top: 30px;
@@ -162,7 +177,10 @@
             transform: translateY(0) scale(0.98);
         }
 
-        /* Partículas */
+        /* =========================================
+           PARTÍCULAS
+        ========================================= */
+
         .estrella {
             position: fixed;
 
@@ -178,8 +196,6 @@
             animation: flotar linear infinite;
 
             pointer-events: none;
-
-            transition: background 1.5s ease;
         }
 
         @keyframes flotar {
@@ -202,6 +218,10 @@
             }
         }
 
+        /* =========================================
+           ANIMACIÓN DE ENTRADA
+        ========================================= */
+
         @keyframes aparecer {
             from {
                 opacity: 0;
@@ -214,9 +234,9 @@
             }
         }
 
-        /* =========================
-           ZONA 2
-        ========================= */
+        /* =========================================
+           ZONA 2 - AZUL
+        ========================================= */
 
         body.zona2 {
             background:
@@ -241,9 +261,9 @@
             border-color: rgba(120, 145, 255, 0.2);
         }
 
-        /* =========================
-           ZONA 3
-        ========================= */
+        /* =========================================
+           ZONA 3 - MORADO
+        ========================================= */
 
         body.zona3 {
             background:
@@ -289,9 +309,9 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
-        /* =========================
-           ZONA 4
-        ========================= */
+        /* =========================================
+           ZONA 4 - ROSA
+        ========================================= */
 
         body.zona4 {
             background:
@@ -337,11 +357,112 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
-        /* =========================
+        /* =========================================
+           ZONA 5 - ROSA / ROJO
+        ========================================= */
+
+        body.zona5 {
+            background:
+                radial-gradient(circle at 15% 20%, #b55b78 0%, transparent 35%),
+                radial-gradient(circle at 85% 80%, #8f3d62 0%, transparent 35%),
+                linear-gradient(135deg, #32141f, #491827, #2b101b);
+        }
+
+        body.zona5::before {
+            background: #f080a4;
+            opacity: 0.23;
+        }
+
+        body.zona5::after {
+            background: #d94e7d;
+            opacity: 0.23;
+        }
+
+        body.zona5 .inicio {
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.42),
+                0 0 70px rgba(225, 87, 132, 0.18);
+
+            border-color: rgba(245, 155, 185, 0.2);
+        }
+
+        body.zona5 h1 {
+            text-shadow:
+                0 0 12px rgba(255, 184, 205, 0.4),
+                0 0 32px rgba(232, 103, 145, 0.22);
+        }
+
+        body.zona5 button {
+            background:
+                linear-gradient(
+                    135deg,
+                    #e26b94,
+                    #c64d76
+                );
+
+            box-shadow:
+                0 8px 22px rgba(198, 77, 118, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* =========================================
+           ZONA 6 - CONFESIÓN
+           
+           La dejamos preparada con una mezcla
+           de azul y rosa para que se sienta
+           diferente a todas las anteriores.
+        ========================================= */
+
+        body.zona6 {
+            background:
+                radial-gradient(circle at 15% 20%, #5b70c4 0%, transparent 35%),
+                radial-gradient(circle at 85% 80%, #a75391 0%, transparent 35%),
+                linear-gradient(135deg, #1a1838, #322040, #24152f);
+        }
+
+        body.zona6::before {
+            background: #718cff;
+            opacity: 0.22;
+        }
+
+        body.zona6::after {
+            background: #d06aad;
+            opacity: 0.22;
+        }
+
+        body.zona6 .inicio {
+            box-shadow:
+                0 20px 55px rgba(0, 0, 0, 0.4),
+                0 0 80px rgba(181, 112, 218, 0.22);
+
+            border-color: rgba(220, 169, 240, 0.22);
+        }
+
+        body.zona6 h1 {
+            text-shadow:
+                0 0 15px rgba(210, 190, 255, 0.4),
+                0 0 35px rgba(194, 118, 224, 0.22);
+        }
+
+        body.zona6 button {
+            background:
+                linear-gradient(
+                    135deg,
+                    #7770d9,
+                    #b05aa8
+                );
+
+            box-shadow:
+                0 8px 24px rgba(151, 96, 199, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* =========================================
            CELULAR
-        ========================= */
+        ========================================= */
 
         @media (max-width: 600px) {
+
             .inicio {
                 width: 92%;
                 padding: 40px 25px;
@@ -359,9 +480,13 @@
     </style>
 </head>
 
+
 <body>
 
-    <!-- Partículas -->
+    <!-- =========================================
+         PARTÍCULAS
+    ========================================= -->
+
     <div class="estrella" style="left: 10%; bottom: -10px; animation-duration: 8s;"></div>
     <div class="estrella" style="left: 25%; bottom: -10px; animation-duration: 11s; animation-delay: 2s;"></div>
     <div class="estrella" style="left: 40%; bottom: -10px; animation-duration: 9s; animation-delay: 4s;"></div>
@@ -369,9 +494,16 @@
     <div class="estrella" style="left: 70%; bottom: -10px; animation-duration: 10s; animation-delay: 3s;"></div>
     <div class="estrella" style="left: 85%; bottom: -10px; animation-duration: 13s; animation-delay: 5s;"></div>
 
+
+    <!-- =========================================
+         CONTENIDO
+    ========================================= -->
+
     <div class="inicio">
 
-        <h1>Hola jeje</h1>
+        <h1>
+            Hola jeje
+        </h1>
 
         <p>
             Hice esto porque quería decirte algo...
@@ -383,16 +515,32 @@
 
     </div>
 
+
     <script>
 
+        /* =========================================
+           REINICIAR ANIMACIÓN
+        ========================================= */
+
         function animarPantalla() {
+
             const inicio = document.querySelector(".inicio");
 
             inicio.style.animation = "none";
+
+            /*
+                Obliga al navegador a reiniciar
+                la animación.
+            */
             inicio.offsetHeight;
+
             inicio.style.animation = "aparecer 0.8s ease";
         }
 
+
+        /* =========================================
+           ZONA 1 → ZONA 2
+        ========================================= */
 
         function comenzar() {
 
@@ -420,6 +568,10 @@
         }
 
 
+        /* =========================================
+           ZONA 2 → ZONA 3
+        ========================================= */
+
         function siguiente() {
 
             const inicio = document.querySelector(".inicio");
@@ -433,24 +585,29 @@
                 </h1>
 
                 <p>
+
                     A lo largo de mi vida, y especialmente durante la secundaria,
                     siempre fui bastante cerrado a la hora de conocer gente nueva.
                     Tenía miedo de volver a salir herido, así que muchas veces
                     prefería mantenerme al margen.
+
                     <br><br>
 
                     Aunque tenía amigos, muchas veces me sentía desplazado,
                     y poco a poco eso empezó a afectar otras cosas:
                     me costaba concentrarme en mis estudios, en mí mismo y,
                     en general, disfrutar las cosas como antes.
+
                     <br><br>
 
                     Pero entonces te conocí.
+
                     <br><br>
 
                     No sé si fue obra del destino o simplemente pura suerte,
                     pero por alguna razón siempre terminábamos sentados juntos.
                     Y, sinceramente, siempre voy a estar agradecido por eso.
+
                     <br><br>
 
                     Creo que una de las mejores partes de mi día es simplemente
@@ -458,18 +615,24 @@
                     o cuando terminamos jugando algún juego completamente aleatorio.
                     Puede parecer algo pequeño, pero cuando estás tú,
                     esas cosas se sienten diferentes.
+
                     <br><br>
 
                     Porque no se trata realmente de lo que hacemos.
+
                     <br>
+
                     Se trata de que eres tú.
+
                     <br><br>
 
                     Y supongo que esa es una de las razones por las que estoy
                     haciendo todo esto.
+
                     <br><br>
 
                     Porque me importas. Y mucho.
+
                 </p>
 
                 <button onclick="zona4()">
@@ -481,6 +644,10 @@
             animarPantalla();
         }
 
+
+        /* =========================================
+           ZONA 3 → ZONA 4
+        ========================================= */
 
         function zona4() {
 
@@ -495,30 +662,37 @@
                 </h1>
 
                 <p>
+
                     No voy a mentirte: no recuerdo cada momento que hemos
                     pasado juntos.
+
                     <br><br>
 
                     Podría intentar escoger algún recuerdo y hacer que parezca
                     muchísimo más importante de lo que realmente fue,
                     pero prefiero ser sincero contigo.
+
                     <br><br>
 
                     Porque lo que sí recuerdo es cómo me sentía cuando estaba
                     contigo.
+
                     <br><br>
 
                     Las pequeñas conversaciones, las veces que terminábamos
                     jugando cualquier cosa, las tonterías y esos momentos que
                     quizá para alguien más serían completamente normales.
+
                     <br><br>
 
                     Tal vez no pueda recordar cada detalle, pero sí puedo
                     recordar que esos momentos llegaron a significar mucho
                     para mí.
+
                     <br><br>
 
                     Y creo que eso dice bastante.
+
                 </p>
 
                 <button onclick="zona5()">
@@ -531,23 +705,66 @@
         }
 
 
+        /* =========================================
+           ZONA 4 → ZONA 5
+        ========================================= */
+
         function zona5() {
 
             const inicio = document.querySelector(".inicio");
 
-            /*
-                Esta será la siguiente zona.
-                Aquí irá la parte previa a la confesión.
-            */
+            document.body.className = "zona5";
 
             inicio.innerHTML = `
 
                 <h1>
-                    Hay algo más...
+                    Y creo que ya puedes imaginarlo...
                 </h1>
 
                 <p>
-                    Aquí continúa la historia.
+
+                    Y creo que después de todo lo que te he contado,
+                    probablemente ya puedas imaginar por dónde va esto...
+
+                    <br><br>
+
+                    Llevo bastante tiempo pensando en cómo decirlo,
+                    porque sinceramente no sabía cómo hacerlo.
+
+                    No quería simplemente mandarte un mensaje y soltarlo
+                    de golpe, como si fueran unas palabras cualquiera.
+
+                    <br><br>
+
+                    Por eso hice todo esto.
+
+                    <br><br>
+
+                    Quería que antes de llegar a esas palabras pudieras
+                    entender todo lo que hay detrás de ellas.
+
+                    Cómo eras tú, poco a poco, convirtiéndote en alguien
+                    tan importante para mí sin que siquiera me diera cuenta.
+
+                    <br><br>
+
+                    Y quizá suene un poco exagerado hacer toda una página
+                    para decir algo que podría resumirse en unas cuantas
+                    palabras...
+
+                    <br><br>
+
+                    Pero supongo que precisamente esas palabras son
+                    demasiado importantes para mí como para decirlas sin más.
+
+                    <br><br>
+
+                    Así que...
+
+                    <br><br>
+
+                    Ya no quiero seguir dándole vueltas.
+
                 </p>
 
                 <button onclick="confesion()">
@@ -560,7 +777,46 @@
         }
 
 
+        /* =========================================
+           ZONA 5 → ZONA 6
+           
+           LA CONFESIÓN TODAVÍA ESTÁ PREPARADA,
+           PERO NO LE PONEMOS EL TEXTO FINAL
+           HASTA QUE LO ESCRIBAMOS.
+        ========================================= */
+
         function confesion() {
+
+            const inicio = document.querySelector(".inicio");
+
+            document.body.className = "zona6";
+
+            inicio.innerHTML = `
+
+                <h1>
+                    Entonces...
+                </h1>
+
+                <p>
+                    Aquí vienen las palabras que tanto
+                    me costó decir.
+                </p>
+
+                <button onclick="revelar()">
+                    Continuar 💙
+                </button>
+
+            `;
+
+            animarPantalla();
+        }
+
+
+        /* =========================================
+           PANTALLA PARA LA CONFESIÓN FINAL
+        ========================================= */
+
+        function revelar() {
 
             const inicio = document.querySelector(".inicio");
 
@@ -571,7 +827,7 @@
                 </h1>
 
                 <p>
-                    Aquí llegará la confesión.
+                    Aquí irá la confesión final.
                 </p>
 
             `;
