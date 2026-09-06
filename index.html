@@ -8,234 +8,289 @@
 
 <style>
 
-/* =========================
-   CONFIGURACIÓN GENERAL
-========================= */
+/* ==================================================
+   BASE
+================================================== */
 
 * {
     box-sizing: border-box;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
+html {
+    min-height: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
+    margin: 0;
+    min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background:
-        radial-gradient(circle at 20% 20%, rgba(50,120,255,.18), transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(90,40,255,.18), transparent 30%),
-        linear-gradient(135deg, #07142f, #0a1f4d);
+    padding: 80px 20px;
 
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
 
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(50,120,255,.18),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(90,40,255,.18),
+            transparent 32%
+        ),
+        linear-gradient(135deg, #07142f, #0a1f4d);
+
     transition:
-        background 1.2s ease,
-        filter 1s ease;
+        background 1.2s ease;
 }
 
 
-/* =========================
-   FONDOS DE CADA ZONA
-========================= */
+/* ==================================================
+   FONDOS POR ZONA
+================================================== */
 
 body.zona2 {
     background:
-        radial-gradient(circle at 20% 20%, rgba(40,160,255,.30), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(20,90,255,.25), transparent 35%),
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(40,160,255,.30),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(20,90,255,.25),
+            transparent 35%
+        ),
         linear-gradient(135deg, #09265c, #104a91);
 }
 
 body.zona3 {
     background:
-        radial-gradient(circle at 20% 20%, rgba(150,70,255,.28), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(80,40,200,.25), transparent 35%),
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(150,70,255,.28),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(80,40,200,.25),
+            transparent 35%
+        ),
         linear-gradient(135deg, #24104f, #4c217e);
 }
 
 body.zona4 {
     background:
-        radial-gradient(circle at 20% 20%, rgba(255,100,180,.25), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(180,50,150,.22), transparent 35%),
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,100,180,.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(180,50,150,.22),
+            transparent 35%
+        ),
         linear-gradient(135deg, #4b174d, #812c69);
 }
 
 body.zona5 {
     background:
-        radial-gradient(circle at 20% 20%, rgba(255,100,130,.28), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(255,50,100,.25), transparent 35%),
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,100,130,.28),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255,50,100,.25),
+            transparent 35%
+        ),
         linear-gradient(135deg, #54152e, #8e2348);
 }
 
 body.zona6 {
     background:
-        radial-gradient(circle at 20% 20%, rgba(80,130,255,.30), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(170,70,255,.28), transparent 35%),
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(80,130,255,.30),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(170,70,255,.28),
+            transparent 35%
+        ),
         linear-gradient(135deg, #101d55, #432066);
 }
 
 
-/* =========================
+/* ==================================================
    ORBES DE LUZ
-========================= */
+================================================== */
 
 .orbe {
     position: fixed;
-    width: 300px;
-    height: 300px;
+
+    width: 280px;
+    height: 280px;
 
     border-radius: 50%;
 
-    background: rgba(90, 150, 255, .12);
+    background: rgba(100,160,255,.10);
 
-    filter: blur(60px);
+    filter: blur(65px);
 
     pointer-events: none;
 
-    animation: moverOrbe 12s ease-in-out infinite alternate;
+    z-index: 0;
+
+    animation: moverOrbe 14s ease-in-out infinite alternate;
 }
 
 .orbe1 {
     top: -100px;
-    left: -80px;
+    left: -100px;
 }
 
 .orbe2 {
+    right: -120px;
     bottom: -120px;
-    right: -80px;
 
-    width: 350px;
-    height: 350px;
+    width: 340px;
+    height: 340px;
 
     animation-delay: -5s;
 }
 
 .orbe3 {
-    top: 40%;
+    top: 45%;
     left: 45%;
 
-    width: 180px;
-    height: 180px;
+    width: 170px;
+    height: 170px;
 
-    opacity: .45;
+    opacity: .4;
 
-    animation-duration: 16s;
+    animation-duration: 18s;
 }
 
 @keyframes moverOrbe {
 
     0% {
-        transform: translate(0, 0) scale(1);
+        transform: translate(0,0) scale(1);
     }
 
     50% {
-        transform: translate(40px, -25px) scale(1.12);
+        transform: translate(35px,-25px) scale(1.1);
     }
 
     100% {
-        transform: translate(-30px, 35px) scale(.95);
+        transform: translate(-25px,30px) scale(.95);
     }
 }
 
 
-/* =========================
+/* ==================================================
    PARTÍCULAS
-========================= */
+================================================== */
+
+.particulas {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
 
 .estrella {
-    position: fixed;
+    position: absolute;
 
-    bottom: -20px;
+    bottom: -15px;
 
-    width: 4px;
-    height: 4px;
+    width: 3px;
+    height: 3px;
 
     border-radius: 50%;
 
     background: white;
 
-    opacity: .6;
-
-    pointer-events: none;
+    opacity: .5;
 
     box-shadow:
-        0 0 6px rgba(255,255,255,.8),
-        0 0 14px rgba(100,170,255,.7);
+        0 0 6px white,
+        0 0 14px rgba(100,170,255,.8);
 
     animation:
-        flotar linear infinite,
+        subir linear infinite,
         parpadear ease-in-out infinite alternate;
 }
 
-.estrella.pequena {
-    width: 2px;
-    height: 2px;
-}
-
-.estrella.mediana {
-    width: 4px;
-    height: 4px;
-}
-
 .estrella.grande {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
 
     box-shadow:
         0 0 8px white,
-        0 0 20px rgba(120,180,255,.9);
+        0 0 20px rgba(130,180,255,.9);
 }
 
-@keyframes flotar {
+@keyframes subir {
 
     from {
-        transform: translateY(0) translateX(0);
+        transform: translateY(0);
     }
 
     to {
-        transform: translateY(-110vh) translateX(35px);
+        transform: translateY(-115vh) translateX(35px);
     }
 }
 
 @keyframes parpadear {
 
     from {
-        opacity: .25;
+        opacity: .2;
         transform: scale(.7);
     }
 
     to {
         opacity: .9;
-        transform: scale(1.3);
+        transform: scale(1.25);
     }
 }
 
 
-/* =========================
-   INDICADOR DE PROGRESO
-========================= */
+/* ==================================================
+   PROGRESO
+================================================== */
 
 #progreso {
     position: fixed;
 
-    top: 22px;
-    right: 25px;
+    top: 20px;
+    right: 22px;
 
-    z-index: 20;
+    z-index: 10;
 
     padding: 7px 12px;
 
-    border: 1px solid rgba(255,255,255,.18);
-
     border-radius: 20px;
+
+    border: 1px solid rgba(255,255,255,.18);
 
     background: rgba(255,255,255,.06);
 
@@ -243,65 +298,34 @@ body.zona6 {
 
     color: rgba(255,255,255,.65);
 
-    font-size: 12px;
+    font-size: 11px;
+
     letter-spacing: 2px;
 
     transition:
         color .8s ease,
-        border .8s ease;
+        border-color .8s ease;
 }
 
 
-/* =========================
-   DECORACIÓN SUPERIOR
-========================= */
-
-.decoracion-superior {
-    position: absolute;
-
-    top: -22px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    color: rgba(255,255,255,.45);
-
-    font-size: 13px;
-
-    pointer-events: none;
-}
-
-.decoracion-superior::before,
-.decoracion-superior::after {
-    content: "";
-
-    width: 35px;
-    height: 1px;
-
-    background: rgba(255,255,255,.25);
-}
-
-
-/* =========================
-   TARJETA PRINCIPAL
-========================= */
+/* ==================================================
+   TARJETA
+================================================== */
 
 .inicio {
     position: relative;
 
-    width: min(90%, 680px);
+    z-index: 2;
+
+    width: min(680px, 100%);
 
     min-height: 390px;
 
-    padding: 55px 45px;
+    flex-shrink: 0;
+
+    padding: 60px 45px;
 
     display: flex;
-    flex-direction: column;
-
     justify-content: center;
     align-items: center;
 
@@ -321,11 +345,8 @@ body.zona6 {
 
     overflow: visible;
 
-    animation: entrada .9s ease;
+    animation: entrada .8s ease;
 }
-
-
-/* brillo alrededor de la tarjeta */
 
 .inicio::before {
     content: "";
@@ -344,50 +365,86 @@ body.zona6 {
             transparent
         );
 
-    opacity: .5;
+    opacity: .4;
 
     pointer-events: none;
 
-    animation: brilloTarjeta 5s ease-in-out infinite;
+    animation: brillo 6s ease-in-out infinite;
 }
 
-@keyframes brilloTarjeta {
+@keyframes brillo {
 
     0%,100% {
-        opacity: .2;
-        transform: translateX(-20%);
+        opacity: .15;
+        transform: translateX(-25%);
     }
 
     50% {
-        opacity: .6;
-        transform: translateX(20%);
+        opacity: .55;
+        transform: translateX(25%);
+    }
+}
+
+@keyframes entrada {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
 
-/* =========================
-   TEXTO
-========================= */
+/* ==================================================
+   CONTENIDO
+================================================== */
+
+#contenido {
+    width: 100%;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.aparecer {
+    animation: aparecer .75s ease;
+}
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 h1 {
-    margin: 0 0 18px;
+    margin: 0 0 20px;
 
     font-size: clamp(30px, 6vw, 48px);
 
-    font-weight: 700;
-
-    letter-spacing: -.5px;
+    line-height: 1.15;
 
     text-shadow:
         0 0 20px rgba(100,160,255,.25);
 }
 
 p {
-    max-width: 540px;
+    max-width: 560px;
 
-    margin: 0 0 35px;
+    margin: 0 auto 35px;
 
-    color: rgba(255,255,255,.78);
+    color: rgba(255,255,255,.80);
 
     font-size: 17px;
 
@@ -395,14 +452,14 @@ p {
 }
 
 
-/* =========================
-   BOTÓN
-========================= */
+/* ==================================================
+   BOTONES
+================================================== */
 
 button {
-    border: none;
-
     padding: 14px 27px;
+
+    border: 1px solid rgba(255,255,255,.20);
 
     border-radius: 999px;
 
@@ -413,8 +470,6 @@ button {
     font-size: 15px;
 
     cursor: pointer;
-
-    border: 1px solid rgba(255,255,255,.2);
 
     box-shadow:
         0 8px 25px rgba(0,0,0,.2);
@@ -436,48 +491,13 @@ button:hover {
 }
 
 button:active {
-    transform: translateY(0) scale(.97);
+    transform: scale(.97);
 }
 
 
-/* =========================
-   ANIMACIÓN DE CAMBIO
-========================= */
-
-.aparecer {
-    animation: aparecer .8s ease;
-}
-
-@keyframes aparecer {
-
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes entrada {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px) scale(.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-
-/* =========================
+/* ==================================================
    COLORES DEL PROGRESO
-========================= */
+================================================== */
 
 body.zona2 #progreso {
     color: #9bd5ff;
@@ -500,14 +520,64 @@ body.zona6 #progreso {
 }
 
 
-/* =========================
-   CONFESIÓN FINAL
-========================= */
+/* ==================================================
+   DECORACIÓN SUPERIOR
+================================================== */
+
+.decoracion-superior {
+    position: absolute;
+
+    top: -25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: rgba(255,255,255,.45);
+
+    font-size: 13px;
+
+    pointer-events: none;
+}
+
+.decoracion-superior::before,
+.decoracion-superior::after {
+    content: "";
+
+    width: 35px;
+    height: 1px;
+
+    background: rgba(255,255,255,.25);
+}
+
+
+/* ==================================================
+   FINAL
+================================================== */
+
+.final-decoracion {
+    margin-bottom: 18px;
+
+    font-size: 20px;
+
+    letter-spacing: 10px;
+
+    color: rgba(255,255,255,.55);
+
+    opacity: 0;
+
+    animation:
+        aparecerTexto 1.5s ease .4s forwards;
+}
 
 .confesion-titulo {
-    font-size: clamp(38px, 8vw, 62px);
-
     margin-bottom: 25px;
+
+    font-size: clamp(38px, 8vw, 62px);
 
     opacity: 0;
 
@@ -553,29 +623,34 @@ body.zona6 #progreso {
 }
 
 
-/* =========================
+/* ==================================================
    CORAZONES FINALES
-========================= */
+================================================== */
 
 .corazon {
     position: fixed;
 
     bottom: -30px;
 
-    font-size: 18px;
-
-    opacity: 0;
+    z-index: 3;
 
     pointer-events: none;
 
-    animation: subirCorazon linear forwards;
+    opacity: 0;
+
+    animation:
+        subirCorazon linear forwards;
 }
 
 @keyframes subirCorazon {
 
     0% {
         opacity: 0;
-        transform: translateY(0) scale(.7) rotate(0deg);
+
+        transform:
+            translateY(0)
+            scale(.7)
+            rotate(0deg);
     }
 
     15% {
@@ -588,6 +663,7 @@ body.zona6 #progreso {
 
     100% {
         opacity: 0;
+
         transform:
             translateY(-105vh)
             translateX(30px)
@@ -597,38 +673,25 @@ body.zona6 #progreso {
 }
 
 
-/* =========================
-   DETALLE FINAL
-========================= */
-
-.final-decoracion {
-    margin-bottom: 18px;
-
-    font-size: 20px;
-
-    letter-spacing: 12px;
-
-    color: rgba(255,255,255,.55);
-
-    animation:
-        aparecerTexto 1.5s ease .5s forwards;
-
-    opacity: 0;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
+/* ==================================================
+   MÓVIL
+================================================== */
 
 @media (max-width: 600px) {
 
+    body {
+        align-items: flex-start;
+
+        padding:
+            80px 15px 60px;
+    }
+
     .inicio {
-        width: 90%;
+        width: 100%;
 
         min-height: 360px;
 
-        padding: 45px 25px;
+        padding: 50px 24px;
 
         border-radius: 24px;
     }
@@ -639,6 +702,7 @@ body.zona6 #progreso {
 
     p {
         font-size: 15px;
+
         line-height: 1.65;
     }
 
@@ -647,8 +711,8 @@ body.zona6 #progreso {
     }
 
     #progreso {
-        top: 15px;
-        right: 15px;
+        top: 14px;
+        right: 14px;
 
         font-size: 10px;
     }
@@ -664,70 +728,36 @@ body.zona6 #progreso {
 
 <body>
 
-<!-- =========================
+<!-- ==================================================
      ORBES
-========================= -->
+================================================== -->
 
 <div class="orbe orbe1"></div>
 <div class="orbe orbe2"></div>
 <div class="orbe orbe3"></div>
 
 
-<!-- =========================
+<!-- ==================================================
      PARTÍCULAS
-========================= -->
+================================================== -->
 
-<div class="estrella pequena"
-     style="left:8%; animation-duration:9s; animation-delay:0s;"></div>
-
-<div class="estrella mediana"
-     style="left:17%; animation-duration:12s; animation-delay:2s;"></div>
-
-<div class="estrella grande"
-     style="left:28%; animation-duration:10s; animation-delay:4s;"></div>
-
-<div class="estrella pequena"
-     style="left:38%; animation-duration:14s; animation-delay:1s;"></div>
-
-<div class="estrella mediana"
-     style="left:49%; animation-duration:11s; animation-delay:3s;"></div>
-
-<div class="estrella grande"
-     style="left:61%; animation-duration:13s; animation-delay:5s;"></div>
-
-<div class="estrella pequena"
-     style="left:72%; animation-duration:10s; animation-delay:1s;"></div>
-
-<div class="estrella mediana"
-     style="left:83%; animation-duration:15s; animation-delay:4s;"></div>
-
-<div class="estrella grande"
-     style="left:93%; animation-duration:12s; animation-delay:2s;"></div>
-
-<div class="estrella pequena"
-     style="left:13%; animation-duration:16s; animation-delay:7s;"></div>
-
-<div class="estrella pequena"
-     style="left:57%; animation-duration:13s; animation-delay:8s;"></div>
-
-<div class="estrella mediana"
-     style="left:76%; animation-duration:17s; animation-delay:6s;"></div>
+<div class="particulas" id="particulas"></div>
 
 
-<!-- =========================
+<!-- ==================================================
      PROGRESO
-========================= -->
+================================================== -->
 
 <div id="progreso">
     01 / 06
 </div>
 
 
-<!-- =========================
+<!-- ==================================================
      TARJETA
-========================= -->
+================================================== -->
 
-<div class="inicio" id="pantalla">
+<div class="inicio">
 
     <div class="decoracion-superior">
         ✦
@@ -735,7 +765,9 @@ body.zona6 #progreso {
 
     <div id="contenido">
 
-        <h1>Hola jeje</h1>
+        <h1>
+            Hola jeje
+        </h1>
 
         <p>
             Hice esto porque quería decirte algo...
@@ -752,53 +784,84 @@ body.zona6 #progreso {
 
 <script>
 
-/* =========================
-   REFERENCIAS
-========================= */
+/* ==================================================
+   ELEMENTOS
+================================================== */
 
-const pantalla = document.getElementById("pantalla");
 const contenido = document.getElementById("contenido");
 const progreso = document.getElementById("progreso");
+const particulas = document.getElementById("particulas");
 
 
-/* =========================
-   ANIMACIÓN DE PANTALLA
-========================= */
+/* ==================================================
+   CREAR PARTÍCULAS AUTOMÁTICAMENTE
+================================================== */
 
-function animarPantalla() {
+for (let i = 0; i < 18; i++) {
+
+    const estrella = document.createElement("div");
+
+    estrella.className = "estrella";
+
+    if (Math.random() > .7) {
+        estrella.classList.add("grande");
+    }
+
+    estrella.style.left =
+        Math.random() * 100 + "%";
+
+    estrella.style.animationDuration =
+        (9 + Math.random() * 9) + "s";
+
+    estrella.style.animationDelay =
+        (-Math.random() * 15) + "s";
+
+    particulas.appendChild(estrella);
+}
+
+
+/* ==================================================
+   CAMBIO DE CONTENIDO
+================================================== */
+
+function cambiarContenido(html, zona, numero) {
+
+    document.body.className = zona;
+
+    progreso.textContent =
+        String(numero).padStart(2, "0") + " / 06";
 
     contenido.classList.remove("aparecer");
 
     void contenido.offsetWidth;
 
+    contenido.innerHTML = html;
+
     contenido.classList.add("aparecer");
+
+    /*
+       Si la página estaba desplazada hacia abajo,
+       vuelve suavemente al inicio.
+    */
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
-/* =========================
-   ACTUALIZAR PROGRESO
-========================= */
-
-function actualizarProgreso(numero) {
-
-    progreso.textContent =
-        String(numero).padStart(2, "0") + " / 06";
-}
-
-
-/* =========================
+/* ==================================================
    ZONA 1 → ZONA 2
-========================= */
+================================================== */
 
 function comenzar() {
 
-    document.body.className = "zona2";
+    cambiarContenido(`
 
-    actualizarProgreso(2);
-
-    contenido.innerHTML = `
-
-        <h1>Bueno... jeje 👀</h1>
+        <h1>
+            Bueno... jeje 👀
+        </h1>
 
         <p>
             Antes de seguir, quiero enseñarte algo.
@@ -808,25 +871,21 @@ function comenzar() {
             Continuar 💙
         </button>
 
-    `;
-
-    animarPantalla();
+    `, "zona2", 2);
 }
 
 
-/* =========================
+/* ==================================================
    ZONA 2 → ZONA 3
-========================= */
+================================================== */
 
 function siguiente() {
 
-    document.body.className = "zona3";
+    cambiarContenido(`
 
-    actualizarProgreso(3);
-
-    contenido.innerHTML = `
-
-        <h1>Hay algo que quiero contarte...</h1>
+        <h1>
+            Hay algo que quiero contarte...
+        </h1>
 
         <p>
             A lo largo de mi vida, y especialmente durante la secundaria,
@@ -872,25 +931,21 @@ function siguiente() {
             Continuar 💜
         </button>
 
-    `;
-
-    animarPantalla();
+    `, "zona3", 3);
 }
 
 
-/* =========================
+/* ==================================================
    ZONA 3 → ZONA 4
-========================= */
+================================================== */
 
 function zona4() {
 
-    document.body.className = "zona4";
+    cambiarContenido(`
 
-    actualizarProgreso(4);
-
-    contenido.innerHTML = `
-
-        <h1>Y aunque no recuerde todo...</h1>
+        <h1>
+            Y aunque no recuerde todo...
+        </h1>
 
         <p>
             No voy a mentirte: no recuerdo cada momento que hemos pasado juntos.
@@ -920,25 +975,21 @@ function zona4() {
             Continuar 💗
         </button>
 
-    `;
-
-    animarPantalla();
+    `, "zona4", 4);
 }
 
 
-/* =========================
+/* ==================================================
    ZONA 4 → ZONA 5
-========================= */
+================================================== */
 
 function zona5() {
 
-    document.body.className = "zona5";
+    cambiarContenido(`
 
-    actualizarProgreso(5);
-
-    contenido.innerHTML = `
-
-        <h1>Y creo que ya puedes imaginarlo...</h1>
+        <h1>
+            Y creo que ya puedes imaginarlo...
+        </h1>
 
         <p>
             Y creo que después de todo lo que te he contado,
@@ -978,23 +1029,17 @@ function zona5() {
             Continuar 💗
         </button>
 
-    `;
-
-    animarPantalla();
+    `, "zona5", 5);
 }
 
 
-/* =========================
+/* ==================================================
    ZONA 5 → ZONA 6
-========================= */
+================================================== */
 
 function confesion() {
 
-    document.body.className = "zona6";
-
-    actualizarProgreso(6);
-
-    contenido.innerHTML = `
+    cambiarContenido(`
 
         <div class="final-decoracion">
             ✦ · ✦
@@ -1012,21 +1057,17 @@ function confesion() {
             Continuar 💙
         </button>
 
-    `;
-
-    animarPantalla();
+    `, "zona6", 6);
 }
 
 
-/* =========================
+/* ==================================================
    CONFESIÓN FINAL
-========================= */
+================================================== */
 
 function revelar() {
 
-    actualizarProgreso(6);
-
-    contenido.innerHTML = `
+    cambiarContenido(`
 
         <div class="final-decoracion">
             ✦ · ♡ · ✦
@@ -1040,17 +1081,15 @@ function revelar() {
             Solo quería decírtelo, porque ya no quería seguir guardándomelo.
         </p>
 
-    `;
-
-    animarPantalla();
+    `, "zona6", 6);
 
     crearCorazones();
 }
 
 
-/* =========================
-   CORAZONES FINALES
-========================= */
+/* ==================================================
+   CORAZONES
+================================================== */
 
 function crearCorazones() {
 
@@ -1060,10 +1099,12 @@ function crearCorazones() {
 
         const corazon = document.createElement("div");
 
-        corazon.classList.add("corazon");
+        corazon.className = "corazon";
 
         corazon.textContent =
-            simbolos[Math.floor(Math.random() * simbolos.length)];
+            simbolos[
+                Math.floor(Math.random() * simbolos.length)
+            ];
 
         corazon.style.left =
             Math.random() * 100 + "%";
@@ -1080,9 +1121,7 @@ function crearCorazones() {
         document.body.appendChild(corazon);
 
         setTimeout(() => {
-
             corazon.remove();
-
         }, 15000);
     }
 }
